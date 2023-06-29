@@ -13,4 +13,19 @@
         insert into users (username, password, name)
         values (#{id}, #{pw}, #{name})
     </insert>
+
+    <update id="update">
+        update users
+        <set>
+            <if test="name != ''">
+                username = #{name},
+            </if>
+            <if test="password != ''">
+                password = #{password}
+            </if>
+            where id=#{id}
+        </set>
+    </update>
+
+
 </mapper>

@@ -1,25 +1,37 @@
 package com.naver.user.domain.request;
 
-import com.naver.user.domain.dto.Update;
-
 public class UpdateRequest {
+    private String name;
+    private String password;
+    private int id;
 
-    private final int id;
-    private final String content;
-
-    public UpdateRequest(int id, String content) {
+    public UpdateRequest(String name, String password, int id) {
+        this.name = name;
+        this.password = password;
         this.id = id;
-        this.content = content;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getContent() {
-        return content;
-    }
-    public Update toDto(int uid){
-        return new Update(id, uid, content);
+    public void setId(int id) {
+        this.id = id;
     }
 }

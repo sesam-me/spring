@@ -3,7 +3,6 @@ package com.naver.user.controller;
 
 import com.naver.user.domain.dto.Update;
 import com.naver.user.domain.entity.TodoJoinUser;
-import com.naver.user.domain.request.UpdateRequest;
 import com.naver.user.service.TodoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -72,24 +70,24 @@ public class MainController {
         return  mav;
     }
 
-    @PostMapping("/todo/update")
-    public ModelAndView updateData(
-            @ModelAttribute UpdateRequest updateRequest,
-            HttpSession session,
-            ModelAndView mav){
+//    @PostMapping("/todo/update")
+//    public ModelAndView updateData(
+//            @ModelAttribute UpdateRequest updateRequest,
+//            HttpSession session,
+//            ModelAndView mav){
+//
+//        int uid = (int) session.getAttribute("id");
+//        Update dto = updateRequest.toDto(uid);
+////        Update update = new Update(
+////                updateRequest.getId(),
+////                uid,
+////                updateRequest.getContent());
+//
+//        todoService.update(dto);
+//
+//        mav.setViewName("redirect:/main");
+//
+//        return mav;
 
-        int uid = (int) session.getAttribute("id");
-        Update dto = updateRequest.toDto(uid);
-//        Update update = new Update(
-//                updateRequest.getId(),
-//                uid,
-//                updateRequest.getContent());
-
-        todoService.update(dto);
-
-        mav.setViewName("redirect:/main");
-
-        return mav;
-
-    }
+//    }
 }

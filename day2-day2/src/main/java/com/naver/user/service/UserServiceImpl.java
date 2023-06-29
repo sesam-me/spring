@@ -6,6 +6,7 @@ import com.naver.user.dao.UserMapper2;
 import com.naver.user.domain.entity.User;
 import com.naver.user.domain.request.LoginRequest;
 import com.naver.user.domain.request.SignupRequest;
+import com.naver.user.domain.request.UpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +38,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean signup(SignupRequest request) {
         return userMapper.signup(request) != 0;
+    }
+
+    @Override
+    public boolean update(UpdateRequest request) {
+        return userMapper.update(request) != 0;
     }
 }

@@ -2,6 +2,7 @@ package com.naver.user.controller;
 import com.naver.user.domain.entity.User;
 import com.naver.user.domain.request.LoginRequest;
 import com.naver.user.domain.request.SignupRequest;
+import com.naver.user.domain.request.UpdateRequest;
 import com.naver.user.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -70,5 +71,16 @@ public class UserController {
     }
 
     @PostMapping("/updateInfo")
+    public ModelAndView postUpdateInfo(@RequestParam String name, @RequestParam String password,HttpSession session, ModelAndView mav){
+//        System.out.println(name);
+//        System.out.println(password);
+//        System.out.println(session.getAttribute("id"));
 
+        UpdateRequest updateRequest = new UpdateRequest(name, password, (Integer) session.getAttribute("id"));
+        userService.update(updateRequest);
+//        mav.addObject("name", updateRequest.getName());
+//        mav.addObject("password", updateRequest.getPassword());
+        mav.setViewName("user/updateInfo");
+        return mav;
+    }
 }
