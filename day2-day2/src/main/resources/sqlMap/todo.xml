@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="todo">
+    <select id="findAll" resultType="TodoJoinUser">
+        select
+            t.id,
+            t.create_at,
+            t.content,
+            t.checked,
+            u.name,
+            u.id uid,
+            t.heart
+        from todos as t
+        inner join users as u
+        on t.user_id = u.id
+    </select>
+    <select id="findByKeyword" resultType="TodoJoinUser" parameterType="String">
+        select
+        t.id,
+        t.create_at,
+        t.content,
+        t.checked,
+        u.name,
+        u.id uid,
+        t.heart
+        from todos as t
+        inner join users as u
+        on t.user_id = u.id
+        where content like #{keyword}
+    </select>
+</mapper>
